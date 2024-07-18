@@ -15,7 +15,6 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
-	extPersonpb "github.com/victorcel/grpc-gateway-proto/pkg/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
@@ -32,8 +31,8 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
-func request_PersonService_GetPerson_0(ctx context.Context, marshaler runtime.Marshaler, client extPersonpb.PersonServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extPersonpb.PersonRequest
+func request_PersonService_GetPerson_0(ctx context.Context, marshaler runtime.Marshaler, client PersonServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PersonRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -45,8 +44,8 @@ func request_PersonService_GetPerson_0(ctx context.Context, marshaler runtime.Ma
 
 }
 
-func local_request_PersonService_GetPerson_0(ctx context.Context, marshaler runtime.Marshaler, server extPersonpb.PersonServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extPersonpb.PersonRequest
+func local_request_PersonService_GetPerson_0(ctx context.Context, marshaler runtime.Marshaler, server PersonServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PersonRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
@@ -62,7 +61,7 @@ func local_request_PersonService_GetPerson_0(ctx context.Context, marshaler runt
 // UnaryRPC     :call PersonServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterPersonServiceHandlerFromEndpoint instead.
-func RegisterPersonServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server extPersonpb.PersonServiceServer) error {
+func RegisterPersonServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server PersonServiceServer) error {
 
 	mux.Handle("POST", pattern_PersonService_GetPerson_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -120,7 +119,7 @@ func RegisterPersonServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.
 // RegisterPersonServiceHandler registers the http handlers for service PersonService to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
 func RegisterPersonServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterPersonServiceHandlerClient(ctx, mux, extPersonpb.NewPersonServiceClient(conn))
+	return RegisterPersonServiceHandlerClient(ctx, mux, NewPersonServiceClient(conn))
 }
 
 // RegisterPersonServiceHandlerClient registers the http handlers for service PersonService
@@ -128,7 +127,7 @@ func RegisterPersonServiceHandler(ctx context.Context, mux *runtime.ServeMux, co
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "extPersonpb.PersonServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "extPersonpb.PersonServiceClient" to call the correct interceptors.
-func RegisterPersonServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client extPersonpb.PersonServiceClient) error {
+func RegisterPersonServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client PersonServiceClient) error {
 
 	mux.Handle("POST", pattern_PersonService_GetPerson_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
