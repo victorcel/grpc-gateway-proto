@@ -1,7 +1,8 @@
 syntax = "proto3";
 
 package proto.person.v1;
-option go_package = "github.com/victorcel/grpc-gateway-proto/pkg/v1/person;personpb";
+
+option go_package = "github.com/victorcel/grpc-gateway-proto/pkg/v1/person;personv1";
 
 import "google/api/annotations.proto";
 
