@@ -15,7 +15,7 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
-	extPersonpb "github.com/victorcel/proto-enertbit-grpc-models/pkg/v1"
+	extPersonpb "github.com/victorcel/grpc-gateway-proto/pkg/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"
