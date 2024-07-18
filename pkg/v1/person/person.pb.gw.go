@@ -2,11 +2,11 @@
 // source: internal/v1/person/person.proto
 
 /*
-Package personpb is a reverse proxy.
+Package personv1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package personpb
+package personv1
 
 import (
 	"context"
@@ -123,10 +123,10 @@ func RegisterPersonServiceHandler(ctx context.Context, mux *runtime.ServeMux, co
 }
 
 // RegisterPersonServiceHandlerClient registers the http handlers for service PersonService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "extPersonpb.PersonServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "extPersonpb.PersonServiceClient"
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "extPersonv1.PersonServiceClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "extPersonv1.PersonServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "extPersonpb.PersonServiceClient" to call the correct interceptors.
+// "extPersonv1.PersonServiceClient" to call the correct interceptors.
 func RegisterPersonServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client PersonServiceClient) error {
 
 	mux.Handle("POST", pattern_PersonService_GetPerson_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
